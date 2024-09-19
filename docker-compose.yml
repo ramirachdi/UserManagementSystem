@@ -5,6 +5,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    image: ramirachdi/frontend:latest  # Specify the image name and tag
     ports:
       - "3000:3000"
     volumes:
@@ -16,6 +17,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    image: ramirachdi/backend:latest  # Specify the image name and tag
     ports:
       - "5000:5000"
     env_file:
