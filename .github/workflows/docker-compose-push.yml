@@ -48,7 +48,7 @@ jobs:
 
     - name: Tag and Push Docker images
       run: |
-        docker tag frontend:latest ramirachdi/frontend:latest
-        docker tag backend:latest ramirachdi/backend:latest
+        docker tag ramirachdi/frontend:latest ramirachdi/frontend:latest
+        docker tag ramirachdi/backend:latest ramirachdi/backend:latest
         docker push ramirachdi/frontend:latest
         docker push ramirachdi/backend:latest
