@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Build and Push Docker Images
 
 on:
   push:
@@ -35,8 +35,15 @@ jobs:
         echo "PORT=${{ secrets.PORT }}" >> backend/.env
         echo "MONGO_URI=${{ secrets.MONGO_URI }}" >> backend/.env
 
-    - name: Build Docker image using docker-compose
+    - name: Build Docker images using docker-compose
       run: docker-compose -f docker-compose.yml build
 
-    - name: Push Docker image
-      run: docker-compose -f docker-compose.yml push
+    - name: Tag and Push Frontend Docker image
+      run: |
+        docker tag frontend:latest ramirachdi/frontend:latest
+        docker push ramirachdi/frontend:latest
+
+    - name: Tag and Push Backend Docker image
+      run: |
+        docker tag backend:latest ramirachdi/backend:latest
+        docker push ramirachdi/backend:latest
